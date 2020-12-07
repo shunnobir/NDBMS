@@ -2,13 +2,24 @@
 #include "studentDB.h"
 
 
-void write_info(Data *data, Info *info)
+void write_info_f(Data *data, Info *info)
 {
     if (data->database) {
         fwrite((void*)info, sizeof(Info), 1, data->database);
-        ++data->entry_ID;
+        printf("written\n");
     }
-    fflush(data->database);
+}
+
+void write_info(Data *data, Info *info)
+{
+    data->student[data->entry_ID] = *info;
+    /* printf("%s\n%s\n%s\n%s\n%s\n%s\n", data->student[data->entry_ID].ID, */
+    /*                                    data->student[data->entry_ID].name, */
+    /*                                    data->student[data->entry_ID].department, */
+    /*                                    data->student[data->entry_ID].faculty, */
+    /*                                    data->student[data->entry_ID].session, */
+    /*                                    data->student[data->entry_ID].email); */
+    ++data->entry_ID;
 }
 
 void read_info_f(Data *data, Info *info)
@@ -31,49 +42,52 @@ void create_data(Data *data, char *name)
 
 void load_data(Data *data, Mode mode, char *name)
 {
-    if (mode == 'c') {
-        create_data(data, name);
-    } else if (mode == 'l') {
-        /* printf("Loading\n"); */
-        FILE *internal_info = fopen("info.txt", "r");
-        if (internal_info) {
-            ID_t total_entry = 0;
-            fread((void*)(&total_entry), sizeof(ID_t), 1, internal_info);
-            /* printf("Entry: %zu\n", total_entry); */
-            fclose(internal_info);
+    char fname[120] = "/";
+    strcat(fname, "home/raihan/repos/studentDB_c/database/");
+    strcat(fname, name);
 
-            data->database = fopen(name, "rb");
-            data->entry_ID = total_entry;
-            if (data->database) {
-                /* printf("opening database\n"); */
-                for (ID_t id = 0; id < total_entry; ++id) {
-                    /* printf("reading one by one\n"); */
-                    read_info_f(data, &data->student[id]); 
-                }
-            } else {
-                fprintf(stderr, "Failed to open %s\n", name);
+    if (mode == 'c') {
+        create_data(data, fname);
+    } else if (mode == 'l') {
+        data->database = fopen(fname, "rb");
+        if (data->database) {
+            ID_t entry_ID = 0;
+            fread((void*)&entry_ID, sizeof(ID_t), 1, data->database);
+            if (entry_ID > 50) {
+                fprintf(stderr, "Entry ID is corrupted\n");
+            }
+
+            data->entry_ID = entry_ID;
+            for (ID_t id = 0; id < entry_ID ; ++id) {
+                Info info;
+                read_info_f(data, &info);
+                data->student[id] = info; 
             }
         } else {
-            fprintf(stderr, "Failed to open info.txt");
+            fprintf(stderr, "Failed to open database file\n");
         }
     }
 }
 
-void close_data(Data *data)
+void close_data_c(Data *data)
 {
-    /* printf("Closing\n"); */
-    FILE *internal_info = fopen("info.txt", "w");
-    if (internal_info) {
-        /* printf("Writing %zu\n", data->entry_ID); */
-        ID_t id = data->entry_ID;
-        fwrite((void*)(&id), sizeof(ID_t), 1, internal_info);
-        fflush(internal_info);
-        fclose(internal_info);
+    printf("Writing\n");
+    ID_t entry_ID = data->entry_ID;
+    fwrite((void*)&entry_ID, sizeof(ID_t), 1, data->database);
 
-        fclose(data->database);
-    } else {
-        fprintf(stderr, "Failed to open info.txt\n");
+    for (ID_t id = 0; id < data->entry_ID; ++id) {
+        Info info = data->student[id];
+        write_info_f(data, &info);
     }
+
+    fclose(data->database);
 }
 
-
+void close_data_l(Data *data)
+{
+    if (data->database) {
+        fclose(data->database);
+    } else {
+        fprintf(stderr, "Failed to close database file\n");
+    }
+}

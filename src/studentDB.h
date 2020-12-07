@@ -30,6 +30,7 @@ void create_data(Data *data, char *name);
 void load_data(Data *data, Mode mode, char *name);
 void write_info(Data *data, Info *info);
 Info *read_info(Data *data, ID_t entry_ID, Info *info);
-void close_data(Data *data);
+void close_data_l(Data *data);
+void close_data_c(Data *data);
 
 #endif

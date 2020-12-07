@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "studentDB.h"
-void get_info(Info *info)
+static void get_info(Info *info)
 {
     printf("Enter student's ID: ");
     scanf("%s", info->ID);
@@ -23,7 +23,7 @@ void get_info(Info *info)
     getchar();
 }
 
-void print_info(Info *info)
+static void print_info(Info *info)
 {
     printf("ID: %s\n", info->ID);
     printf("Name: %s\n", info->name);
@@ -44,7 +44,7 @@ int main(void) {
     getchar();
     
     if (option == 1) {
-        printf("Enter file's name: ");
+        printf("Enter file's name (absolute location is recommended): ");
         char fname[20];
         scanf("%[^\n]", fname);
         load_data(&database, 'c', fname);
@@ -60,23 +60,24 @@ int main(void) {
                 Info info;
                 get_info(&info);
                 write_info(&database, &info);
+                putchar('\n');
             } else {
                 break;
             }
         }
+        close_data_c(&database);
     } else {
-        printf("Enter the database file name: ");
+        printf("Enter the database file name (absolute location is recommended): ");
         char fname[20];
         scanf("%s", fname);
         load_data(&database, 'l', fname);
-        /* printf("Main function: enty: %zu\n", database.entry_ID); */
         for (ID_t id = 0; id < database.entry_ID; ++id) {
             Info info;
             read_info(&database, id, &info);
             print_info(&info);
             putchar('\n');
         }
+        close_data_l(&database);
     }
 
-    close_data(&database);
 }
