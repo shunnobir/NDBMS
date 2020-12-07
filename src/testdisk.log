@@ -1,0 +1,414 @@
+
+
+Sun Dec  6 21:35:22 2020
+Command line: TestDisk
+
+TestDisk 7.1, Data Recovery Utility, July 2019
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+OS: Linux, kernel 5.4.0-56-generic (#62-Ubuntu SMP Mon Nov 23 19:20:19 UTC 2020) x86_64
+Compiler: GCC 9.2
+ext2fs lib: 1.45.5, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.1
+User is not root!
+Hard disk list
+
+
+TestDisk exited normally.
+Using locale 'en_US.UTF-8'.
+
+
+Sun Dec  6 21:35:22 2020
+Command line: TestDisk /debug
+
+TestDisk 7.1, Data Recovery Utility, July 2019
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+OS: Linux, kernel 5.4.0-56-generic (#62-Ubuntu SMP Mon Nov 23 19:20:19 UTC 2020) x86_64
+Compiler: GCC 9.2
+ext2fs lib: 1.45.5, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.1
+/dev/sda: LBA, HPA, LBA48, DCO support
+/dev/sda: size       234441648 sectors
+/dev/sda: user_max   234441648 sectors
+/dev/sda: native_max 234441648 sectors
+/dev/sda: dco        234441648 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Warning: can't get size for Disk /dev/loop16 - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/sda - 120 GB / 111 GiB - CHS 14593 255 63, sector size=512 - Apacer AST280 120GB, S/N:C4420788076305465253, FW:APB12PE0
+Disk /dev/loop0 - 169 MB / 161 MiB - 330576 sectors (RO), sector size=512
+Disk /dev/loop1 - 58 MB / 55 MiB - 113296 sectors (RO), sector size=512
+Disk /dev/loop10 - 67 MB / 64 MiB - 131792 sectors (RO), sector size=512
+Disk /dev/loop11 - 32 MB / 31 MiB - 63616 sectors (RO), sector size=512
+Disk /dev/loop12 - 242 MB / 231 MiB - 473664 sectors (RO), sector size=512
+Disk /dev/loop13 - 32 MB / 31 MiB - 63632 sectors (RO), sector size=512
+Disk /dev/loop14 - 244 MB / 233 MiB - 477512 sectors (RO), sector size=512
+Disk /dev/loop15 - 228 MB / 217 MiB - 446248 sectors (RO), sector size=512
+Disk /dev/loop2 - 170 MB / 162 MiB - 333552 sectors (RO), sector size=512
+Disk /dev/loop3 - 58 MB / 55 MiB - 113384 sectors (RO), sector size=512
+Disk /dev/loop4 - 267 MB / 255 MiB - 523400 sectors (RO), sector size=512
+Disk /dev/loop5 - 67 MB / 64 MiB - 132648 sectors (RO), sector size=512
+Disk /dev/loop6 - 349 MB / 332 MiB - 681672 sectors (RO), sector size=512
+Disk /dev/loop7 - 349 MB / 332 MiB - 681672 sectors (RO), sector size=512
+Disk /dev/loop8 - 53 MB / 50 MiB - 103776 sectors (RO), sector size=512
+Disk /dev/loop9 - 53 MB / 51 MiB - 104496 sectors (RO), sector size=512
+
+
+TestDisk exited normally.
+
+
+Sun Dec  6 21:35:32 2020
+Command line: TestDisk
+
+TestDisk 7.1, Data Recovery Utility, July 2019
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+OS: Linux, kernel 5.4.0-56-generic (#62-Ubuntu SMP Mon Nov 23 19:20:19 UTC 2020) x86_64
+Compiler: GCC 9.2
+ext2fs lib: 1.45.5, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.1
+User is not root!
+Hard disk list
+
+
+TestDisk exited normally.
+Using locale 'en_US.UTF-8'.
+
+
+Sun Dec  6 21:35:32 2020
+Command line: TestDisk /debug
+
+TestDisk 7.1, Data Recovery Utility, July 2019
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+OS: Linux, kernel 5.4.0-56-generic (#62-Ubuntu SMP Mon Nov 23 19:20:19 UTC 2020) x86_64
+Compiler: GCC 9.2
+ext2fs lib: 1.45.5, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.1
+/dev/sda: LBA, HPA, LBA48, DCO support
+/dev/sda: size       234441648 sectors
+/dev/sda: user_max   234441648 sectors
+/dev/sda: native_max 234441648 sectors
+/dev/sda: dco        234441648 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Warning: can't get size for Disk /dev/loop16 - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/sda - 120 GB / 111 GiB - CHS 14593 255 63, sector size=512 - Apacer AST280 120GB, S/N:C4420788076305465253, FW:APB12PE0
+Disk /dev/loop0 - 169 MB / 161 MiB - 330576 sectors (RO), sector size=512
+Disk /dev/loop1 - 58 MB / 55 MiB - 113296 sectors (RO), sector size=512
+Disk /dev/loop10 - 67 MB / 64 MiB - 131792 sectors (RO), sector size=512
+Disk /dev/loop11 - 32 MB / 31 MiB - 63616 sectors (RO), sector size=512
+Disk /dev/loop12 - 242 MB / 231 MiB - 473664 sectors (RO), sector size=512
+Disk /dev/loop13 - 32 MB / 31 MiB - 63632 sectors (RO), sector size=512
+Disk /dev/loop14 - 244 MB / 233 MiB - 477512 sectors (RO), sector size=512
+Disk /dev/loop15 - 228 MB / 217 MiB - 446248 sectors (RO), sector size=512
+Disk /dev/loop2 - 170 MB / 162 MiB - 333552 sectors (RO), sector size=512
+Disk /dev/loop3 - 58 MB / 55 MiB - 113384 sectors (RO), sector size=512
+Disk /dev/loop4 - 267 MB / 255 MiB - 523400 sectors (RO), sector size=512
+Disk /dev/loop5 - 67 MB / 64 MiB - 132648 sectors (RO), sector size=512
+Disk /dev/loop6 - 349 MB / 332 MiB - 681672 sectors (RO), sector size=512
+Disk /dev/loop7 - 349 MB / 332 MiB - 681672 sectors (RO), sector size=512
+Disk /dev/loop8 - 53 MB / 50 MiB - 103776 sectors (RO), sector size=512
+Disk /dev/loop9 - 53 MB / 51 MiB - 104496 sectors (RO), sector size=512
+
+Partition table type (auto): Intel
+Disk /dev/sda - 120 GB / 111 GiB - Apacer AST280 120GB
+Partition table type: Intel
+
+Interface Advanced
+Geometry from i386 MBR: head=255 sector=2
+BAD_RS LBA=2048 64512
+FAT32 at 0/32/33
+Info: size boot_sector 1048576, partition 1048576
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+BAD_RS LBA=1050624 16450498
+FAT32 at 65/101/37
+Info: size boot_sector 1050624, partition 1050624
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1050623
+sectors : 1050624
+cluster_size : 8
+no_of_cluster : 131068 (2 - 131069)
+fat_length 1024 calculated 1024
+set_FAT_info: name from BS used
+BAD_RS LBA=2103294 16450498
+BAD_RS LBA=2103296 16450498
+ 1 * FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+ 2 P FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+     FAT32, blocksize=4096, 537 MB / 513 MiB
+ 3 E extended               130 235 40 14593  66  1  232337410
+ 5 L Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 118 GB / 110 GiB
+
+FAT: cluster=2(0x2), pos=4128
+Directory /
+
+FAT: cluster=2(0x2), pos=1052704
+Directory /
+
+Analyse Disk /dev/sda - 120 GB / 111 GiB - CHS 14593 255 63
+Geometry from i386 MBR: head=255 sector=2
+BAD_RS LBA=2048 64512
+FAT32 at 0/32/33
+Info: size boot_sector 1048576, partition 1048576
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+BAD_RS LBA=1050624 16450498
+FAT32 at 65/101/37
+Info: size boot_sector 1050624, partition 1050624
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1050623
+sectors : 1050624
+cluster_size : 8
+no_of_cluster : 131068 (2 - 131069)
+fat_length 1024 calculated 1024
+set_FAT_info: name from BS used
+BAD_RS LBA=2103294 16450498
+BAD_RS LBA=2103296 16450498
+Current partition structure:
+ 1 * FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+
+Bad relative sector.
+ 2 P FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+
+Bad relative sector.
+ 3 E extended               130 235 40 14593  66  1  232337410
+
+Bad relative sector.
+ 5 L Linux                  130 235 42 14593  66  1  232337408
+
+Bad relative sector.
+
+search_part()
+Disk /dev/sda - 120 GB / 111 GiB - CHS 14593 255 63
+FAT32 at 0/32/33
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+
+FAT32 at 0/32/33
+FAT: cluster=2(0x2), pos=4128
+     FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+FAT32 at 65/101/37
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1050623
+sectors : 1050624
+cluster_size : 8
+no_of_cluster : 131068 (2 - 131069)
+fat_length 1024 calculated 1024
+set_FAT_info: name from BS used
+
+FAT32 at 65/101/37
+FAT: cluster=2(0x2), pos=1052704
+     FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+     FAT32, blocksize=4096, 537 MB / 513 MiB
+
+recover_EXT2: s_block_group_nr=0/886, s_mnt_count=296/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29042176
+recover_EXT2: part_size 232337408
+Filesystem created: Wed Jun 24 00:55:24 2020
+Last mount time:    Sun Dec  6 19:26:18 2020
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 118 GB / 110 GiB
+
+Results
+   * FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+   P FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+     FAT32, blocksize=4096, 537 MB / 513 MiB
+   P Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 118 GB / 110 GiB
+
+Hint for advanced users: dmsetup may be used if you prefer to avoid rewriting the partition table for the moment:
+echo "0 1048576 linear /dev/sda 2048" | dmsetup create test0
+echo "0 1050624 linear /dev/sda 1050624" | dmsetup create test1
+echo "0 232337408 linear /dev/sda 2103296" | dmsetup create test2
+
+interface_write()
+ 1 * FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+ 2 P FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+ 3 P Linux                  130 235 42 14593  66  1  232337408
+
+search_part()
+Disk /dev/sda - 120 GB / 111 GiB - CHS 14593 255 63
+FAT32 at 0/32/33
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+
+FAT32 at 0/32/33
+FAT: cluster=2(0x2), pos=4128
+     FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+FAT32 at 0/32/39
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+
+FAT32 at 0/32/39
+FAT: cluster=2(0x2), pos=4128
+     FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+FAT32 at 65/101/37
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1050623
+sectors : 1050624
+cluster_size : 8
+no_of_cluster : 131068 (2 - 131069)
+fat_length 1024 calculated 1024
+set_FAT_info: name from BS used
+
+FAT32 at 65/101/37
+FAT: cluster=2(0x2), pos=1052704
+     FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+     FAT32, blocksize=4096, 537 MB / 513 MiB
+FAT32 at 65/101/43
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1050623
+sectors : 1050624
+cluster_size : 8
+no_of_cluster : 131068 (2 - 131069)
+fat_length 1024 calculated 1024
+set_FAT_info: name from BS used
+
+FAT32 at 65/101/43
+FAT: cluster=2(0x2), pos=1052704
+     FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+     FAT32, blocksize=4096, 537 MB / 513 MiB
+
+recover_EXT2: s_block_group_nr=0/886, s_mnt_count=296/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29042176
+recover_EXT2: part_size 232337408
+Filesystem created: Wed Jun 24 00:55:24 2020
+Last mount time:    Sun Dec  6 19:26:18 2020
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 118 GB / 110 GiB
+
+block_group_nr 1
+
+recover_EXT2: "e2fsck -b 32768 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=1/886, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29042176
+recover_EXT2: part_size 232337408
+Filesystem created: Wed Jun 24 00:55:24 2020
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 118 GB / 110 GiB
+     Linux Swap             148  66 47   409  87 46    4194288
+     SWAP2 version 1, pagesize=4096, 2147 MB / 2047 MiB
+
+block_group_nr 3
+
+recover_EXT2: "e2fsck -b 98304 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=3/886, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29042176
+recover_EXT2: part_size 232337408
+Filesystem created: Wed Jun 24 00:55:24 2020
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 118 GB / 110 GiB
+
+block_group_nr 5
+
+recover_EXT2: "e2fsck -b 163840 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=5/886, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29042176
+recover_EXT2: part_size 232337408
+Filesystem created: Wed Jun 24 00:55:24 2020
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 118 GB / 110 GiB
+
+block_group_nr 7
+
+recover_EXT2: "e2fsck -b 229376 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=7/886, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29042176
+recover_EXT2: part_size 232337408
+Filesystem created: Wed Jun 24 00:55:24 2020
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 118 GB / 110 GiB
+
+block_group_nr 9
+
+recover_EXT2: "e2fsck -b 294912 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=9/886, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29042176
+recover_EXT2: part_size 232337408
+Filesystem created: Wed Jun 24 00:55:24 2020
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 118 GB / 110 GiB
+Search for partition aborted
+
+Results
+   * FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+   P FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+     FAT32, blocksize=4096, 537 MB / 513 MiB
+     Linux                  130 235 42 14593  66  1  232337408
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 118 GB / 110 GiB
+     Linux Swap             148  66 47   409  87 62    4194304
+     SWAP2 version 1, pagesize=4096, 2147 MB / 2048 MiB
+
+Hint for advanced users: dmsetup may be used if you prefer to avoid rewriting the partition table for the moment:
+echo "0 1048576 linear /dev/sda 2048" | dmsetup create test0
+echo "0 1050624 linear /dev/sda 1050624" | dmsetup create test1
+echo "0 232337408 linear /dev/sda 2103296" | dmsetup create test2
+echo "0 4194304 linear /dev/sda 2381824" | dmsetup create test3
+
+interface_write()
+ 1 * FAT32                    0  32 33    65 101 36    1048576 [NO NAME]
+ 2 P FAT32                   65 101 37   130 203  9    1050624 [NO NAME]
+simulate write!
+
+write_mbr_i386: starting...
+write_all_log_i386: starting...
+No extended partition
+
+TestDisk exited normally.
