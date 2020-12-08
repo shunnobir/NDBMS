@@ -1,21 +1,11 @@
 CC=clang-10
-CFLAGS=-Wall -Wextra -std=c17 -pedantic
+CFLAGS=-Wall -Wextra -pedantic -std=c17
 
-DIR=/home/raihan/repos/studentDB_c
-SRC=$(DIR)/src/main
-STD=$(DIR)/src/studentDB
-STD_H=$(DIR)/src/studentDB.h
+main:
+	$(CC) $(CFLAGS) -o ~/repos/studentDB_c/bin/main main.c
 
-STDOBJ=$(DIR)/obj/studentDB.o
-SRCBIN=$(DIR)/bin/main
-
-$(STDOBJ): $(STD_H)
-	$(CC) $(CFLAGS) -c -o $(STDOBJ) $(STD).c
-
-main: $(STDOBJ) $(STD_H)
-	$(CC) $(CFLAGS) $(STDOBJ) $(SRC).c -o \
-		$(SRCBIN)
+run:
+	~/repos/studentDB_c/bin/main
 
 clean:
-	rm $(STDOBJ)
-	rm $(SRCBIN)
+	rm ~/repos/studentDB_c/bin/main

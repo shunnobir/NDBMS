@@ -1,83 +1,217 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "studentDB.h"
-static void get_info(Info *info)
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+
+enum commands {
+    LIST, CREATE,
+    INSERT, FINISH, 
+    LOAD, ADD,
+    GET, CLOSE,
+    SHOWALL, 
+    HELP, EXIT
+};
+
+char const *Commands[] = { "list", "create", "insert", "finish", 
+                    "load", "add", "get", "close", "show-all", "help", "exit"
+                  };
+
+typedef struct Fields {
+    char name[34];
+    char phone[12];
+    char email[34];
+} Fields;
+
+typedef struct table {
+    uint32_t no_of_records;
+    Fields records[20];
+} Table;
+
+void help_ndbs();
+void command_error(char const *command, void (*help) (void));
+
+void help_list();
+void list_database();
+
+void help_create();
+void insert_record();
+void create_database();
+
+void help_load();
+void add_record();
+void get_record();
+void show_all_records();
+void close_database();
+void load_database();
+
+void print_command_prompt(char const *command);
+
+bool equal(char const *str1, char const *str2)
 {
-    printf("Enter student's ID: ");
-    scanf("%s", info->ID);
-    getchar();
-    printf("Enter student's name: ");
-    scanf("%[^\n]", info->name);
-    getchar();
-    printf("Enter student's department name: ");
-    scanf("%[^\n]", info->department);
-    getchar();
-    printf("Enter student's faculty name: ");
-    scanf("%[^\n]", info->faculty);
-    getchar();
-    printf("Enter student's session: ");
-    scanf("%[^\n]", info->session);
-    getchar();
-    printf("ENter sttudent's email: ");
-    scanf("%[^\n]", info->email);
-    getchar();
+    return strcmp(str1, str2) == 0;
 }
 
-static void print_info(Info *info)
+void load_prompt()
 {
-    printf("ID: %s\n", info->ID);
-    printf("Name: %s\n", info->name);
-    printf("Department: %s\n", info->department);
-    printf("Faculty: %s\n", info->faculty);
-    printf("Session: %s\n", info->session);
-    printf("Email: %s\n", info->email);
-}
+    printf("ndbs> ");
+    print_command_prompt("ndbs");
+    char command[7];
+    scanf("%s", command);
 
-int main(void) {
-    Data database;
-    printf("Choose an option: \n"
-           "1. Create New Database\n"
-           "2. Open Existing Database\n");
-    int option = 0;
-    while (scanf("%d", &option) && (option != 1 && option != 2))
-        printf("Please enter 1 or 2: ");
-    getchar();
-    
-    if (option == 1) {
-        printf("Enter file's name (absolute location is recommended): ");
-        char fname[20];
-        scanf("%[^\n]", fname);
-        load_data(&database, 'c', fname);
-        
-        while (true) {
-            printf("Do you want to make a new entry?\n"
-                   "1. yes\t2. No\n");
-            while (scanf("%d", &option) && (option != 1 && option != 2))
-                printf("Please enter 1 or 2: ");        
+    while (!equal(command, Commands[EXIT])) {
+        if (equal(command, Commands[LIST])) {
             getchar();
+            list_database();
+        } else if (equal(command, Commands[CREATE])) {
+            create_database();
+        } else if (equal(command, Commands[LOAD])) {
+            getchar();
+            load_database();
+        } else if (equal(command, Commands[HELP])) {
+            getchar();
+            help_ndbs();
+        } else if (equal(command, Commands[EXIT])){
+            getchar();
+            return;
+        } else {
+            getchar();
+            command_error(command, help_ndbs);
+            return;
+        }
 
-            if (option == 1) {
-                Info info;
-                get_info(&info);
-                write_info(&database, &info);
-                putchar('\n');
-            } else {
-                break;
-            }
+        printf("ndbs> ");
+        print_command_prompt("ndbs");
+        scanf("%s", command);
+        /* getchar(); */
+    }
+}
+
+int main(int argc, char *argv[static 1]) {
+    if (argc >= 2) {
+        if (argc > 2) {
+            fprintf(stderr, "Unknown argumets will be ignored\n");
         }
-        close_data_c(&database);
-    } else {
-        printf("Enter the database file name (absolute location is recommended): ");
-        char fname[20];
-        scanf("%s", fname);
-        load_data(&database, 'l', fname);
-        for (ID_t id = 0; id < database.entry_ID; ++id) {
-            Info info;
-            read_info(&database, id, &info);
-            print_info(&info);
-            putchar('\n');
+
+        if (!strcmp(argv[1], "--help") || !strcmp(argv[1], "-h")) {
+        printf("Usage: ndbs [OPTION]\n"
+                "Options:\n"
+                "  -h --help        Shows this message\n"
+              );
+        } else {
+            fprintf(stderr, "Unknown option %s\n", argv[1]);
+            printf("Usage: ndbs [OPTION]\n"
+                    "Options:\n"
+                    "  -h --help        Shows this message\n"
+                  );
         }
-        close_data_l(&database);
+        return 0;
     }
 
+    load_prompt();
+    return 0;
+}
+
+
+void help_ndbs()
+{
+    printf("Usage: COMMAND [OPTION]\n"
+            "Commands:\n"
+            "  list                 - lists the databases that were created or loaded byndbs\n"
+            "  create [FILE NAME]   - creates a new database and expects a filename\n"
+            "  load [FILE NAME]     - loads a database named [FILE NAME]\n"
+            "  exit                 - exits from ndbs\n"
+            "  help                 - shows a this message.\n"
+            );
+}
+
+void list_database()
+{
+    return;
+}
+
+void print_command_prompt(char const *command)
+{
+    char c;
+    while ((c = getchar()) == '\n')
+        printf("%s> ", command);
+    ungetc(c, stdin);
+}
+
+void insert_record(Table *table)
+{
+    print_command_prompt("ndbs~create~insert");
+    char line[80];
+    scanf("%[^\n]", line);
+
+    char name[34];
+    char phone[12];
+    char email[34];
+    sscanf(line, "%s %s %s", name, phone, email);
+    strcpy(table->records[table->no_of_records].name, name); 
+    strcpy(table->records[table->no_of_records].phone, phone); 
+    strcpy(table->records[table->no_of_records].email, email); 
+    ++table->no_of_records;
+}
+
+void help_create()
+{
+    printf("Under construction\n");
+}
+
+void create_database()
+{
+    print_command_prompt("ndbs~create~filename");
+
+    char file_name[20];
+    scanf("%s", file_name);
+    
+    print_command_prompt("ndbs~create~subcommands");
+    char command[7];
+    scanf("%s", command);
+    
+    Table table;
+    table.no_of_records = 0;
+    while (true) {
+
+        if (equal(command, Commands[LIST])) {
+            if (table.no_of_records) {
+                for (uint32_t i = 0; i < table.no_of_records; ++i) {
+                    printf("[%s | %s | %s]\n", table.records[i].name, table.records[i].phone, table.records[i].email);
+                }
+            }
+        } else if (equal(command, Commands[INSERT])) {
+            insert_record(&table);
+        } else if (equal(command, Commands[EXIT])) {
+            getchar();
+            return;
+        } else if (equal(command, Commands[HELP])) {
+            /* getchar(); */
+            help_create();
+        } else if (equal(command, Commands[EXIT]) || equal(command, Commands[FINISH])) {
+            getchar();
+            return;
+        } else {
+            getchar();
+            command_error(command, help_create);
+            return;
+        }
+        print_command_prompt("ndbs~create~subcommands");
+        scanf("%s", command);
+    }
+    
+    // TODO: write data to file
+    return;
+}
+
+void command_error(char const *command, void(*help) (void))
+{
+    printf("Unknown command \'%s\'\n", command);
+    help();
+    return;
+}
+
+void load_database()
+{
+    return;
 }
