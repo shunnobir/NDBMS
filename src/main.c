@@ -47,10 +47,10 @@ typedef struct table {
 typedef void Func_t (void);
 
 /* Typedef to declare index type for arrays */
-typedef ptrdiff_t Index_t;
+typedef uint32_t Index_t;
 
 /* Typedef for counter type */
-typedef uint8_t Counter;
+typedef uint32_t Counter;
 
 /* To avoid null statement */
 #define IGNORE
@@ -61,27 +61,28 @@ typedef uint8_t Counter;
 
 /* Functions for 'list' commands */
 void list_database();
+void save_file_names(char const *fname);
 
 
 /* Functions for 'create' command */
-void create_database();
-void insert_record();
+void create_database(void);
+void create_insert_record();
 
 
 /* Functons for 'load' command */
+void load_database();
 void add_record();
 void get_record();
 void show_all_records();
 void close_database();
-void load_database();
 
 
 /* Fnctions for handling command errors and to print out help */
 void help_ndbs(int argc, char const *argv);
 void help_ndbs_commands();
-void help_list();
-void help_create();
-void help_load();
+void help_list_command();
+void help_create_command();
+void help_load_command();
 
 
 /* This function takes the unrecognized command name and the appropriate help function pointer */ 
@@ -111,15 +112,12 @@ void load_prompt()
     /* while user doesn't want to exit or enters unrecognized command */
     while (true) {
         if (equal(command, Commands[LIST])) {
-            getchar();  /* eats the newline, enterd by the user after writing a command */
             list_database();
         } else if (equal(command, Commands[CREATE])) {
             create_database();
         } else if (equal(command, Commands[LOAD])) {
-            getchar();
             load_database();
         } else if (equal(command, Commands[HELP])) {
-            getchar();
             help_ndbs_commands();
         } else if (equal(command, Commands[EXIT])){
             return;
@@ -170,7 +168,7 @@ void get_command(char *command, uint8_t length)
 {
     char c;
     uint8_t i = 0;
-    while ((c = getchar()) != '\n' && --length)
+    while ((c = getchar()) != '\n' && c != ' ' && --length)
         command[i++] = c;
     command[i] = '\0';
 }
@@ -224,7 +222,7 @@ void help_insert() {
 void insert_get_line(char *name, char *phone, char *email)
 {
     /* We expect input in comma separeted format.
-     * Like this "name, phone_no, email"        */
+      Like this "name, phone_no, email"        */
     
     char c;
     Counter comma = 0;
@@ -233,15 +231,28 @@ void insert_get_line(char *name, char *phone, char *email)
     while ((c = getchar())) {
         if (c == ',') {
             ++comma;
-            if ((c = getchar()) == ' ') /* Checks if the input is of "---, --" or "---,--" format. '-' is any char */
-                IGNORE;
+           
+            /* Checks if the input is of "---, --" or "---,--" format. '-' is any char */
+            if ((c = getchar()) == ' ')
+                IGNORE;  /* This is a null statement in disguise */
             else
                 ungetc(c, stdin);
+
             continue;
         }
 
-        if (c == ' ' && (c = getchar()) == ',') /* checks if format is "--- ," or not */
-            continue;
+        /* temporary code block to make temp varibale's scope small */
+        {
+            char temp;
+            
+            /* checks if format is "--- ," or not */
+            if (c == ' ' && (temp = getchar()) == ',') {
+                ungetc(temp, stdin);
+                continue;
+            } else if (c == ' ' && temp != ',')
+                ungetc(temp, stdin);
+        }
+        /* scope ends */
 
         if (comma < 2 && c == '\n') {  /* if comma count is not equals to 2 but user has entered newline */
             ungetc(c, stdin);
@@ -253,27 +264,15 @@ void insert_get_line(char *name, char *phone, char *email)
             return;
         }
 
-        if (!comma && name_i >= 0) {  /* when comma count is 0, name is expected*/
+        if (!comma && name_i <= 33) {  /* when comma count is 0, name is expected */
             name[name_i++] = c;
             name[name_i] = '\0';
-            if (name_i + 1 >= 34) {
-                fprintf(stderr, "Warning: length of name has to be between 1-33 characters\n");
-                name_i = -1;
-            }
-        } else if (comma == 1 && phone_i >= 0) {  /* count=1, phone_no is expected */
+        } else if (comma == 1 && phone_i <= 33) {  /* count=1, phone_no is expected */
             phone[phone_i++] = c;
             phone[phone_i] = '\0';
-            if (phone_i + 1 >= 34) {
-                fprintf(stderr, "Warning: length of phone number has to be between 1-11 digits\n");
-                phone_i = -1;
-            }
-        } else if (comma == 2 && email_i >= 0) {  /* count=2, email is expected */
+        } else if (comma == 2 && email_i <= 33) {  /* count=2, email is expected */
             email[email_i++] = c;
             email[email_i] = '\0';
-            if (email_i+1 >= 34) {
-                fprintf(stderr, "Warning: length of email has to be between 1-33 characters\n");
-                email_i = -1;
-            }
         }
     }
     
@@ -283,7 +282,7 @@ void insert_get_line(char *name, char *phone, char *email)
     }
 }
 
-void insert_record(Table *table)
+void create_insert_record(Table *table)
 {
     print_command_prompt("ndbs~create~insert");
 
@@ -298,7 +297,7 @@ void insert_record(Table *table)
     ++table->no_of_records;
 }
 
-void help_create()
+void help_create_command()
 {
     printf("Under construction\n");
 }
@@ -326,9 +325,9 @@ void create_database()
                 }
             }
         } else if (equal(command, Commands[INSERT])) {
-            insert_record(&table);
+            create_insert_record(&table);
         } else if (equal(command, Commands[HELP])) {
-            help_create();
+            help_create_command();
         } else if (equal(command, Commands[EXIT])) {
             getchar();
             break;
@@ -337,7 +336,7 @@ void create_database()
             break;
         } else {
             getchar();
-            command_error(command, help_create);
+            command_error(command, help_create_command);
             break;
         }
         print_command_prompt("ndbs~create~subcommands");
@@ -398,7 +397,7 @@ void save_table(char const *name, Table *table)
     perror(NULL);
 }
 
-void help_load()
+void help_load_command()
 {
     printf("Under development\n");
 }
@@ -430,10 +429,10 @@ void load_database()
                     printf("(%s , %s , %s)\n", table.records[i].name, table.records[i].phone, table.records[i].email);
         } else if (equal(command, Commands[HELP])) {
             getchar();
-            help_load();
+            help_load_command();
         } else {
             getchar();
-            command_error(command, help_load);
+            command_error(command, help_load_command);
             return;
         }
         print_command_prompt("ndbs~load~subcommands");
