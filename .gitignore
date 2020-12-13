@@ -1,2 +1,4 @@
-database/
+src/*
+*.c
+!main.c
 Makefile
