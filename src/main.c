@@ -51,6 +51,10 @@ void get_filename(char *fname);
 char scan_command(char *command);
 bool check_wrong_format(char *c);
 
+/* Misc */
+void print_table_end(void);
+void print_table_head(void);
+
 /* Interface functions */
 void database_insert(Database *database, Func_t *func);
 void database_help(void);
@@ -82,7 +86,7 @@ int main(void)
     CommandType commandType;
     
     while (true) {
-        command_prompt("dbs");
+        command_prompt("ndbms");
         commandType = get_command(INITIAL_COMMAND);
         switch (commandType) {
             case CREATE_COMMAND:
@@ -233,6 +237,26 @@ bool check_wrong_format(char *c)
     return false;
 }
 
+void print_table_head()
+{
+    for (int i = 0; i < 117; ++i)
+        printf("_");
+    putchar('\n');
+    printf("|%9s%2c%23s%18c%13s%9c%24s%18c\n", "Entry ID", '|', "Name", '|', "Phone", '|', "Email", '|');
+    print_table_end();
+}
+
+void print_table_end()
+{
+    for (int i = 0; i < 117; ++i) {
+        if (i == 0 || i == 11 || i == 52 || i == 74 || i == 116)
+            printf("|");
+        else
+            printf("_");
+    }
+    putchar('\n');
+}
+
 /* Interface Functions */
 void database_insert(Database *database, Func_t *func)
 {
@@ -251,17 +275,20 @@ void database_insert(Database *database, Func_t *func)
     strcpy(database->records[database->no_of_records].phone, phone);
     strcpy(database->records[database->no_of_records].email, email);
     ++database->no_of_records;
-    database_print_record(database->no_of_records, &database->records[database->no_of_records-1]);
+
+    print_table_head();
+    database_print_record(database->no_of_records, &database->records[database->no_of_records - 1]);
+    print_table_end();
 }
 
 void database_help()
 {
-    printf("usage: dbs> command [FILE]\n"
+    printf("usage: ndbms> command [FILE]\n"
             "command:\n"
             "  create [FILE]        creates a database file named [FILE]\n"
             "  load [FILE]          loads a database file named [FILE]\n"
             "  help                 shows this message\n"
-            "  exit                 exits from dbs\n"
+            "  exit                 exits from ndbms\n"
           );
 }
 
@@ -272,14 +299,20 @@ void database_exit()
 
 void database_print_record(uint32_t ID, Record *record)
 {
-    printf("Entry ID: %u\n"
-            "Name: %s\n"
-            "Phone: %s\n"
-            "Email: %s\n",
-            ID,
-            record->name,
-            record->phone,
-            record->email);
+    int Namewidth = (42 - strlen(record->name))/2 + strlen(record->name);
+    int vertBarWidth1 = 42 - Namewidth - 1;
+    int PhoneWidth = (22 - strlen(record->phone))/2 + strlen(record->phone);
+    int vertBarWidth2 = 22 - PhoneWidth;
+    int EmailWidth = (42 - strlen(record->email))/2 + strlen(record->email);
+    int vertBarWidth3 = 42 - EmailWidth;
+    printf("|%6u%5c%*s%*c%*s%*c%*s%*c\n",
+           ID, '|',
+            Namewidth, record->name,
+            vertBarWidth1, '|',
+            PhoneWidth, record->phone,
+            vertBarWidth2, '|',
+            EmailWidth, record->email,
+            vertBarWidth3, '|');
 }
 
 /* Command: Create */
@@ -305,7 +338,7 @@ void database_create()
     Database database = { .no_of_records = 0 };
     CommandType commandType;
     while (true) {
-        command_prompt("dbs~create");
+        command_prompt("ndbms~create");
         commandType = get_command(CREATE_COMMAND);
         switch (commandType) {
             case INSERT_COMMAND:
@@ -341,15 +374,20 @@ void database_create_insert(Database *database)
 void database_create_list_inserted_data(Database *database)
 {
     uint32_t dataSize = database->no_of_records;
-    for (uint32_t id = 0; id < dataSize; ++id) {
-        database_print_record(id+1, &database->records[id]);
-        putchar('\n');
-    }
+
+    if (dataSize) {
+        print_table_head();
+        for (uint32_t id = 0; id < dataSize; ++id){
+            database_print_record(id + 1, &database->records[id]);
+            print_table_end();
+        }
+    } else
+        printf("Database is empty\n");
 }
 
 void database_create_help()
 {
-    printf("usage: dbs~create> command [ARGUMENTS]...\n"
+    printf("usage: ndbms~create> command [ARGUMENTS]...\n"
             "commands:\n"
             "  insert [NAME], [PHONE], [EMAIL]      insert command accepts three comma seperated\n"
             "                                       arguments (name, phone and email)\n"
@@ -374,6 +412,7 @@ void database_create_write_database(Database *database, char const *fname)
         }
     } else {
         fprintf(stderr, "Error creating '%s'\n", fname);
+        perror(NULL);
         return;
     }
     printf("All data has been successfully saved to file '%s'\n",  fname);
@@ -412,7 +451,7 @@ void database_load()
         return;
 
     while (true) {
-        command_prompt("dbs~load");
+        command_prompt("ndbms~load");
         CommandType commandType = get_command(LOAD_COMMAND);
 
         switch (commandType) {
@@ -452,8 +491,10 @@ bool database_load_read_datafile(Database *database, char const *fname)
         for (uint32_t id = 0; id < no_of_records; ++id)
             fread(&database->records[id], sizeof(Record), 1, file);
         return true;
-    } else
+    } else {
         fprintf(stderr, "Error opening file\n");
+        perror(NULL);
+    }
     return false;
 }
 
@@ -479,7 +520,9 @@ void database_load_search_data(Database *database)
     eat_newline();
 
     printf("Search result:\n");
-    database_print_record(ID, &database->records[ID-1]);
+    print_table_head();
+    database_print_record(ID, &database->records[ID - 1]);
+    print_table_end();
 }
 
 void database_load_add_data(Database *database)
@@ -489,7 +532,7 @@ void database_load_add_data(Database *database)
 
 void database_load_help()
 {
-    printf("usage: dbs~load> command [option]...\n"
+    printf("usage: ndbms~load> command [option]...\n"
             "command:\n"
             "  list                             lists all data from the file provided\n"
             "                                   with load command\n"
