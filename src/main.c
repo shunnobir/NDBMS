@@ -42,7 +42,7 @@ struct Database {
 void command_prompt(char const *prompt);
 CommandType get_command(CommandType commandType);
 CommandType initial_command(void);
-CommandType check_command(char const *command, Func_t func);
+CommandType check_command(char const *command, Func_t *func);
 bool equal(char const *str1, char const *str2);
 bool valid_char(char *c);
 void unrecognized_command(char const *command, Func_t *func);
@@ -157,7 +157,7 @@ CommandType initial_command()
     return returned_value;
 }
 
-CommandType check_command(char const *command, Func_t func)
+CommandType check_command(char const *command, Func_t *func)
 {
     if (equal(command, Commands[CREATE_COMMAND]))
         return CREATE_COMMAND;

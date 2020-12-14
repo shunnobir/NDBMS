@@ -168,10 +168,10 @@ Exiting...
 
 - User can create same file twice.
 - Name and email has to be between 1 and 39 characters. And phone has to be between 1 and 19 characters.
-- Commands has to be between 1 and 6 characters.
-- No check for tabs or multiple spaces. You can make the program misbehave with tabs and multiple spaces.
-- Remove operation is still not added.
+- Commands have to be between 1 and 6 characters.
+- No checks for tabs or multiple spaces. You can make the program misbehave with tabs and multiple spaces.
+- 'remove' operation is still not added.
 - If user doesn't use the 'save' command, database will not be saved and file will not be created.
-- Now, we can only search data by 'ID'. I didn't add search by name, phone or email operation yet.
-- some other corner cases may not be handled.
+- Now, we can only search data by 'ID'. I didn't add search by name, phone or email operations yet.
+- some other corner cases were also not handled.
 
