@@ -28,7 +28,7 @@ ndbms~create>
 	```txt
 	ndbms~create> insert Fahmid Ahmed, 01234567891, fahmid365@gmail.com
 	____________________________________________________________________
-	| Entry ID |      Name        |    Phone    |  	   Email           |
+	| Entry ID |      Name        |    Phone    |  	   Email    |
 	|__________|__________________|_____________|______________________|
 	|     1    |   Fahmid Ahmed   | 01234567891 | fahmid365@gmail.com  |
 	|__________|__________________|_____________|______________________|
@@ -39,7 +39,7 @@ ndbms~create>
 	```txt
 	ndbms~create> list
 	____________________________________________________________________
-	| Entry ID |      Name        |    Phone    |  	   Email           |
+	| Entry ID |      Name        |    Phone    |  	   Email    |
 	|__________|__________________|_____________|______________________|
 	|     1    |   Fahmid Ahmed   | 01234567891 | fahmid365@gmail.com  |
 	|__________|__________________|_____________|______________________|
@@ -90,7 +90,7 @@ ndbms~load>
 	```txt
 	ndbms~load> list
 	_____________________________________________________________________
-	| Entry ID |      Name        |    Phone    |  	     Email          |
+	| Entry ID |      Name        |    Phone    |  	     Email   |
 	|__________|__________________|_____________|_______________________|
 	|     1    |   Fahmid Ahmed   | 01234567891 | fahmid365@gmail.com   |
 	|__________|__________________|_____________|_______________________|
@@ -103,7 +103,7 @@ ndbms~load>
 	```txt
 	ndbms~load> add Saqlain Mustak, 01234556455, saqlainmustak@gmail.com
 	________________________________________________________________________
-	| Entry ID |      Name        |    Phone    |  	       Email           |
+	| Entry ID |      Name        |    Phone    |  	       Email    |
 	|__________|__________________|_____________|__________________________|
 	|     3    |  Saqlain Mustak  | 01234556455 | saqlainmustak@gmail.com  |
 	|__________|__________________|_____________|__________________________|
@@ -114,7 +114,7 @@ ndbms~load>
 	```txt
 	ndbms~load> search ID 3
 	________________________________________________________________________
-	| Entry ID |      Name        |    Phone    |  	       Email           |
+	| Entry ID |      Name        |    Phone    |  	       Email    |
 	|__________|__________________|_____________|__________________________|
 	|     3    |  Saqlain Mustak  | 01234556455 | saqlainmustak@gmail.com  |
 	|__________|__________________|_____________|__________________________|
@@ -127,10 +127,10 @@ ndbms~load>
 	usage: ndbms~load> command [option]...
 	command:
 	  list                             lists all data from the file provided
-									   with load command
+					    with load command
 	  add [NAME], [PHONE], [EMAIL]     adds new data to the database file
 	  search [FIELD] [DATA]            search [DATA] by [FIELD] which are name,
-									   phone and email
+					    phone and email
 	  help                             shows this message
 	  exit                             exits from load mode
 	ndbms~load>
