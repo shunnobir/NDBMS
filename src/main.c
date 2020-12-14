@@ -410,6 +410,7 @@ void database_create_write_database(Database *database, char const *fname)
         for (uint32_t i = 0; i < dataSize; ++i) {
             fwrite(&database->records[i], sizeof(Record), 1, datafile);
         }
+        fclose(datafile);
     } else {
         fprintf(stderr, "Error creating '%s'\n", fname);
         perror(NULL);
@@ -490,6 +491,7 @@ bool database_load_read_datafile(Database *database, char const *fname)
 
         for (uint32_t id = 0; id < no_of_records; ++id)
             fread(&database->records[id], sizeof(Record), 1, file);
+        fclose(file);
         return true;
     } else {
         fprintf(stderr, "Error opening file\n");
