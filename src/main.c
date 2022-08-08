@@ -84,7 +84,7 @@ void database_load_help(void);
 int main(void)
 {
     CommandType commandType;
-    
+
     while (true) {
         command_prompt("ndbms");
         commandType = get_command(INITIAL_COMMAND);
@@ -120,16 +120,16 @@ CommandType get_command(CommandType commandType)
 {
 #define IGNORE
     switch (commandType) {
-    case CREATE_COMMAND:
-        return create_command();
-    case INITIAL_COMMAND:
-        return initial_command();
-    case LIST_COMMAND:
-        return LIST_COMMAND;
-    case LOAD_COMMAND:
-        return load_command();
-    default:
-        IGNORE;
+        case CREATE_COMMAND:
+            return create_command();
+        case INITIAL_COMMAND:
+            return initial_command();
+        case LIST_COMMAND:
+            return LIST_COMMAND;
+        case LOAD_COMMAND:
+            return load_command();
+        default:
+            IGNORE;
     } 
 
     return UNKNOWN_COMMAND;
@@ -220,7 +220,7 @@ char scan_command(char *command)
     char c;
     uint8_t length = 7, index = 0;
     while (valid_char(&c) && --length)
-       command[index++] = c;
+        command[index++] = c;
     command[index] = '\0';
     return c;
 }
@@ -267,10 +267,10 @@ void database_insert(Database *database, Func_t *func)
 
     char name[40], phone[20], email[40];
     size_t retad_char = sscanf(line, "%[^,], %[^,], %[^\n]", name, phone, email);
-    
+
     if (retad_char != 3)
         wrong_format(func);
-    
+
     strcpy(database->records[database->no_of_records].name, name);
     strcpy(database->records[database->no_of_records].phone, phone);
     strcpy(database->records[database->no_of_records].email, email);
@@ -306,7 +306,7 @@ void database_print_record(uint32_t ID, Record *record)
     int EmailWidth = (42 - strlen(record->email))/2 + strlen(record->email);
     int vertBarWidth3 = 42 - EmailWidth;
     printf("|%6u%5c%*s%*c%*s%*c%*s%*c\n",
-           ID, '|',
+            ID, '|',
             Namewidth, record->name,
             vertBarWidth1, '|',
             PhoneWidth, record->phone,
@@ -323,14 +323,14 @@ CommandType create_command()
 
     CommandType returned_value = check_command(command, database_create_help);
     if (returned_value == INSERT_COMMAND && check_wrong_format(&c))
-            return WRONG_FORMAT;
+        return WRONG_FORMAT;
     return returned_value;
 }
 
 void database_create()
 {
 #define RETURN_TO_MAIN return;
-    
+
     char fname[20];
     get_filename(fname);
     printf("Creating '%s'...\n", fname);
@@ -432,7 +432,7 @@ CommandType load_command()
 {
     char command[7];
     char c = scan_command(command);
-    
+
     CommandType returned_value = check_command(command, database_load_help);
     if ((returned_value == ADD_COMMAND || returned_value == SEARCH_COMMAND)
             && check_wrong_format(&c))
@@ -456,27 +456,27 @@ void database_load()
         CommandType commandType = get_command(LOAD_COMMAND);
 
         switch (commandType) {
-        case LIST_COMMAND:
-            database_load_list_data(&database);
-            break;
-        case ADD_COMMAND:
-            database_load_add_data(&database);
-            break;
-        case SEARCH_COMMAND:
-            database_load_search_data(&database);
-            break;
-        case HELP_COMMAND:
-            database_load_help();
-            break;
-        case WRONG_FORMAT:
-            wrong_format(database_load_help);
-            break;
-        case EXIT_COMMAND:
-            database_load_save_data(&database, fname);
-            database_load_exit();
-            RETURN_TO_MAIN;
-        default:
-            ;
+            case LIST_COMMAND:
+                database_load_list_data(&database);
+                break;
+            case ADD_COMMAND:
+                database_load_add_data(&database);
+                break;
+            case SEARCH_COMMAND:
+                database_load_search_data(&database);
+                break;
+            case HELP_COMMAND:
+                database_load_help();
+                break;
+            case WRONG_FORMAT:
+                wrong_format(database_load_help);
+                break;
+            case EXIT_COMMAND:
+                database_load_save_data(&database, fname);
+                database_load_exit();
+                RETURN_TO_MAIN;
+            default:
+                ;
         }
     }
 }
